@@ -4,7 +4,7 @@ from pypdf import PdfReader
 from dotenv import load_dotenv
 from google import genai
 from groq import Groq
-from sentence_transformers import SentenceTransformer
+from fastembed import TextEmbedding
 
 from smart_chunker import smart_chunk
 
@@ -20,12 +20,10 @@ client = genai.Client()
 groq_client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 
-model = SentenceTransformer("BAAI/bge-small-en-v1.5")
+model = TextEmbedding("BAAI/bge-small-en-v1.5")
 
 def embed(texts):
-    vectors = model.encode(texts)
-    return vectors.tolist()
-
+    return [vector.tolist() for vector in model.embed(texts)]
 
 def read_pdf(pdf_path):
     if not os.path.exists(pdf_path):
