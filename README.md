@@ -2,6 +2,8 @@
 
 A Retrieval-Augmented Generation (RAG) system that lets you upload PDFs and ask questions about them.
 
+🔗 **[Live Demo](https://sage-5iof.onrender.com)** — try it now (first load takes ~30 sec due to free-tier cold start)
+
 ## Features
 
 - Upload PDF documents via a web interface
